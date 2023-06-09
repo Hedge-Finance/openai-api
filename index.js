@@ -12,6 +12,48 @@ const DEFAULT_ENGINE = "davinci";
  * @throws {Error} Throws an error if the provided engine name for embeddings is not valid.
  * @returns {Object} An instance of the OpenAI class.
  * @remarks This class provides methods for interacting with the OpenAI API, including completing text, searching documents, classifying text, and more.
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.complete({ prompt: 'Hello, my name is', max_tokens: 5 })
+ * .then(response => console.log(response.data.choices[0].text))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.search({ engine: 'davinci', query: 'What is the meaning of life?' })
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.answers({ model: 'davinci', question: 'What is the meaning of life?', documents: ['Life is a characteristic that distinguishes physical entities that have biological processes, such as signaling and self-sustaining processes, from those that do not, either because such functions have ceased (they have died), or because they never had such functions and are classified as inanimate.'], })
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.classification({ model: 'text-davinci-002', query: 'Is this a positive or negative sentiment?', examples: [['I loved the movie, it was great!', 'Positive'], ['I hated the movie, it was terrible!', 'Negative']] })
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.engines()
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.engine('davinci')
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
+ *
+ * @example
+ * const openai = new OpenAI('your_api_key');
+ * openai.embeddings({ engine: 'text-similarity-babbage-001', queries: ['Hello, world!', 'Goodbye, world!'] })
+ * .then(response => console.log(response.data))
+ * .catch(error => console.error(error));
  */
 class OpenAI {
   constructor(api_key) {

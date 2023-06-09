@@ -148,6 +148,18 @@ declare module 'openai-api' {
      * @example
      * const openai = new OpenAI('my-api-key');
      * openai.complete({ prompt: 'Hello', maxTokens: 5 }).then(result => console.log(result));
+     *
+     * @method complete
+     * @param {CompletionOpts} opts - The options to complete.
+     * @returns {Promise<Completion>} - A Promise that resolves to a Completion object.
+     *
+     * @method encode
+     * @param {string} str - The string to be encoded.
+     * @returns {number[]} An array of numbers representing the encoded string.
+     *
+     * @method search
+     * @param {SearchOpts} opts - The search options to use.
+     * @returns {Promise<Search>} - A promise that resolves with the search results.
      */
     class OpenAI {
         constructor(api: string);
